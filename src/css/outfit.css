@@ -1,0 +1,98 @@
+/**
+ * @license
+ *
+ * Font Family: Outfit
+ *
+ * Font Styles:
+ * Outfit Light
+ * Outfit Light Italic
+ * Outfit Regular
+ * Outfit Italic
+ * Outfit Medium
+ * Outfit Medium Italic
+ * Outfit Bold
+ * Outfit Bold Italic
+ * Outfit Black
+ * Outfit Black Italic
+ *
+*/
+
+@font-face {
+    font-family: "Outfit";
+    src: url("/fonts/Outfit-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url("/fonts/Outfit-LightItalic.ttf") format("truetype");
+    font-weight: 300;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url("/fonts/Outfit-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url("/fonts/Outfit-Italic.ttf") format("truetype");
+    font-weight: 400;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url("/fonts/Outfit-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url("/fonts/Outfit-MediumItalic.ttf") format("truetype");
+    font-weight: 500;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url("/fonts/Outfit-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url("/fonts/Outfit-BoldItalic.ttf") format("truetype");
+    font-weight: 700;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url("/fonts/Outfit-Black.ttf") format("truetype");
+    font-weight: 900;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url("/fonts/Outfit-BlackItalic.ttf") format("truetype");
+    font-weight: 900;
+    font-display: swap;
+    font-style: italic;
+}

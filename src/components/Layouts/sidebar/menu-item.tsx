@@ -1,0 +1,79 @@
+import { cn } from "@/lib/utils";
+import { cva } from "class-variance-authority";
+import Link from "next/link";
+import { useSidebarContext } from "./sidebar-context";
+import useAccess from "@/hooks/use-access";
+import Access from "@/hooks/Access";
+
+const menuItemBaseStyles = cva(
+  " px-3.5 font-medium text-dark-4 transition-all duration-200 dark:text-dark-6",
+  {
+    variants: {
+      isActive: {
+        true: "bg-[rgba(87,80,241,0.07)] text-primary hover:bg-[rgba(87,80,241,0.07)] dark:bg-[#FFFFFF1A] dark:text-white",
+        false:
+          "hover:bg-gray-100 hover:text-dark hover:dark:bg-[#FFFFFF1A] hover:dark:text-white",
+      },
+    },
+    defaultVariants: {
+      isActive: false,
+    },
+  },
+);
+
+export function MenuItem(
+  props: {
+    className?: string;
+    children: React.ReactNode;
+    isActive: boolean;
+    access: any;
+  } & (
+    | { as?: "button"; onClick: () => void }
+    | { as: "link"; href: string; isPro?: boolean }
+  ),
+) {
+  const { toggleSidebar, isMobile } = useSidebarContext();
+  const access: any = useAccess();
+
+  if (props.as === "link") {
+    return (
+      <Access accessible={props?.access ? props.access!.map((acc: any) => access[acc]).includes(true) : true}>
+        <Link
+          href={props.href}
+          // Close sidebar on clicking link if it's mobile
+          onClick={() => isMobile && toggleSidebar()}
+          className={cn(
+            menuItemBaseStyles({
+              isActive: props.isActive,
+              className: "relative block py-2",
+            }),
+            props.className,
+          )}
+        >
+          {props.children}
+
+          {props.isPro && (
+            <span className="absolute right-3.5 top-1/2 flex h-5 -translate-y-1/2 items-center justify-center rounded-md bg-primary px-1.5 text-xs text-white">
+              Coming Soon
+            </span>
+          )}
+        </Link>
+      </Access>
+    );
+  }
+
+  return (
+      <Access accessible={props?.access ? props.access!.map((acc: any) => access[acc]).includes(true) : true}>
+        <button
+          onClick={props.onClick}
+          aria-expanded={props.isActive}
+          className={menuItemBaseStyles({
+            isActive: props.isActive,
+            className: "flex w-full items-center gap-3 py-3",
+          })}
+        >
+          {props.children}
+        </button>
+      </Access>
+  );
+}
