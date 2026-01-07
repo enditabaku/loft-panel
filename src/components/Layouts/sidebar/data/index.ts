@@ -6,6 +6,12 @@ export const NAV_DATA = [
     // access: ['admin'],
     items: [
       {
+        title: "Staff Members",
+        url: "/staff",
+        items: [],
+        icon: Icons.User
+      },
+      {
         title: "Email Subscriptions",
         url: "/mail-subscribe",
         items: [],
