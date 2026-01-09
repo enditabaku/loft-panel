@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import BlogCategoryService from "@/services/blog/category";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import ImageUploaderCrop from "../../website/add/ImageUploaderCrop";
 
 const AddConnector = () => {
   const [data, setData] = useState<any>({
@@ -36,6 +37,10 @@ const AddConnector = () => {
       setLoading(false);
     }
   }
+  
+  const handleUpdate = (value: any) => {
+    console.log(value)
+  };
 
 
   return (
@@ -54,7 +59,7 @@ const AddConnector = () => {
                   <div className="w-full">
                     <label
                       className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
-                      htmlFor="name_en"
+                      htmlFor="name"
                     >
                       Name
                     </label>
@@ -62,9 +67,9 @@ const AddConnector = () => {
                       <input
                         className="w-full  border-[1.5px] border-stroke bg-white py-2.5 pl-4.5 pr-4.5 text-dark focus:border-primary focus-visible:outline-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
                         type="text"
-                        name="name_en"
-                        id="name_en"
-                        defaultValue={data?.name_en}
+                        name="name"
+                        id="name"
+                        defaultValue={data?.name}
                         onChange={(e) => handleChange?.(e)}
                       />
                     </div>
@@ -72,7 +77,7 @@ const AddConnector = () => {
                   <div className="w-full">
                     <label
                       className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
-                      htmlFor="name"
+                      htmlFor="surname"
                     >
                       Surname
                     </label>
@@ -80,13 +85,45 @@ const AddConnector = () => {
                       <input
                         className="w-full  border-[1.5px] border-stroke bg-white py-2.5 pl-4.5 pr-4.5 text-dark focus:border-primary focus-visible:outline-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
                         type="text"
-                        name="name_sq"
-                        id="name_sq"
-                        defaultValue={data?.name_sq}
+                        name="surname"
+                        id="surname"
+                        defaultValue={data?.surname}
                         onChange={(e) => handleChange?.(e)}
                       />
                     </div>
                   </div>
+                  <div className="w-full">
+                    <label
+                      className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
+                      htmlFor="position"
+                    >
+                      Position
+                    </label>
+                    <div className="relative">
+                      <input
+                        className="w-full  border-[1.5px] border-stroke bg-white py-2.5 pl-4.5 pr-4.5 text-dark focus:border-primary focus-visible:outline-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                        type="text"
+                        name="position"
+                        id="position"
+                        defaultValue={data?.position}
+                        onChange={(e) => handleChange?.(e)}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
+                  <div className="w-full" style={{flex: 1}}>
+                    <label
+                      className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
+                      htmlFor="photo"
+                    >
+                      Photo
+                    </label>
+                    <div className="relative">
+                      <ImageUploaderCrop aspect={6/6} setImage={(img: any) => {handleUpdate(img)}} />
+                    </div>
+                  </div>
+                  <div style={{flex: 3}}></div>
                 </div>
                 <div className="flex justify-end gap-3">
                   <button
