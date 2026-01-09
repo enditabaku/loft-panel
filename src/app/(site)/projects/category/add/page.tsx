@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import BlogCategoryService from "@/services/blog/category";
+import ProjectsCategoryService from "@/services/projects/category";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import ImageUploaderCrop from "../../website/add/ImageUploaderCrop";
+import ImageUploaderCrop from "@/app/(site)/website/add/ImageUploaderCrop";
 
-const AddConnector = () => {
+const AddCategory = () => {
   const [data, setData] = useState<any>({
     name: "",
   });
@@ -20,11 +20,15 @@ const AddConnector = () => {
         [e.target.name]: e.target.value,
       });
   };
+  
+  const handleUpdate = (value: any) => {
+    console.log(value)
+  };
 
   async function submitForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
-      const result = await BlogCategoryService.createCategory(data);
+      const result = await ProjectsCategoryService.createCategory(data);
       if (result?.data?.success) {
         toast.success("Category created successfully");
         router.push("/news/category");
@@ -37,10 +41,6 @@ const AddConnector = () => {
       setLoading(false);
     }
   }
-  
-  const handleUpdate = (value: any) => {
-    console.log(value)
-  };
 
 
   return (
@@ -50,7 +50,7 @@ const AddConnector = () => {
           <div className="rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
             <div className="border-b border-stroke px-7 py-4 dark:border-dark-3">
               <h3 className="font-medium text-dark dark:text-white">
-                Staff Information
+                Category Information
               </h3>
             </div>
             <div className="p-7">
@@ -59,17 +59,17 @@ const AddConnector = () => {
                   <div className="w-full">
                     <label
                       className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
-                      htmlFor="name"
+                      htmlFor="name_en"
                     >
-                      Name
+                      Name in EN
                     </label>
                     <div className="relative">
                       <input
                         className="w-full  border-[1.5px] border-stroke bg-white py-2.5 pl-4.5 pr-4.5 text-dark focus:border-primary focus-visible:outline-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
                         type="text"
-                        name="name"
-                        id="name"
-                        defaultValue={data?.name}
+                        name="name_en"
+                        id="name_en"
+                        defaultValue={data?.name_en}
                         onChange={(e) => handleChange?.(e)}
                       />
                     </div>
@@ -77,17 +77,17 @@ const AddConnector = () => {
                   <div className="w-full">
                     <label
                       className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
-                      htmlFor="surname"
+                      htmlFor="name_sq"
                     >
-                      Surname
+                      Name in SQ
                     </label>
                     <div className="relative">
                       <input
                         className="w-full  border-[1.5px] border-stroke bg-white py-2.5 pl-4.5 pr-4.5 text-dark focus:border-primary focus-visible:outline-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
                         type="text"
-                        name="surname"
-                        id="surname"
-                        defaultValue={data?.surname}
+                        name="name_sq"
+                        id="name_sq"
+                        defaultValue={data?.name_sq}
                         onChange={(e) => handleChange?.(e)}
                       />
                     </div>
@@ -95,41 +95,19 @@ const AddConnector = () => {
                   <div className="w-full">
                     <label
                       className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
-                      htmlFor="position"
+                      htmlFor="icon"
                     >
-                      Position
-                    </label>
-                    <div className="relative">
-                      <input
-                        className="w-full  border-[1.5px] border-stroke bg-white py-2.5 pl-4.5 pr-4.5 text-dark focus:border-primary focus-visible:outline-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
-                        type="text"
-                        name="position"
-                        id="position"
-                        defaultValue={data?.position}
-                        onChange={(e) => handleChange?.(e)}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
-                  <div className="w-full" style={{flex: 1}}>
-                    <label
-                      className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
-                      htmlFor="photo"
-                    >
-                      Photo
+                      Icon
                     </label>
                     <div className="relative">
                       <ImageUploaderCrop aspect={6/6} setImage={(img: any) => {handleUpdate(img)}} />
                     </div>
                   </div>
-                  <div style={{flex: 3}}></div>
                 </div>
                 <div className="flex justify-end gap-3">
                   <button
                     className="flex justify-center  border border-stroke px-6 py-[7px] font-medium text-dark hover:shadow-1 dark:border-dark-3 dark:text-white"
                     type="button"
-                    onClick={() => {router.push('/staff')}}
                   >
                     Cancel
                   </button>
@@ -156,4 +134,4 @@ const AddConnector = () => {
   );
 };
 
-export default AddConnector;
+export default AddCategory;

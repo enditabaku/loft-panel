@@ -6,25 +6,54 @@ export const NAV_DATA = [
     // access: ['admin'],
     items: [
       {
-        title: "Staff Members",
-        url: "/staff",
-        items: [],
-        icon: Icons.User
+        title: "Manage People",
+        icon: Icons.User,
+        items: [
+          {
+            title: "Staff Members",
+            url: "/staff",
+            // access: ['super_admin']
+          },
+          {
+            title: "Clients",
+            url: "/clients",
+            // access: ['super_admin']
+          },
+          {
+            title: "Partners",
+            url: "/partners",
+            // access: ['super_admin']
+          }
+        ],
       },
       {
-        title: "Email Subscriptions",
-        url: "/mail-subscribe",
-        items: [],
-        icon: Icons.BellIcon
+        title: "Projects",
+        icon: Icons.FourCircle,
+        items: [
+          {
+            title: "Types",
+            url: "/projects/type",
+            // access: ['super_admin']
+          },
+          {
+            title: "Categories",
+            url: "/projects/category",
+            // access: ['super_admin']
+          },
+          {
+            title: "List",
+            url: "/projects/list",
+            // access: ['super_admin']
+          },
+          {
+            title: "Add Project",
+            url: "/projects/list/add",
+            // access: ['super_admin']
+          },
+        ],
       },
       {
-        title: "Mail Campaigns",
-        url: "/campaigns",
-        items: [],
-        icon: Icons.Inbox
-      },
-      {
-        title: "News",
+        title: "Blog",
         icon: Icons.Newspaper,
         items: [
           {
@@ -65,6 +94,18 @@ export const NAV_DATA = [
           },
         ],
       },
+      {
+        title: "Email Subscriptions",
+        url: "/mail-subscribe",
+        items: [],
+        icon: Icons.BellIcon
+      },
+      {
+        title: "Mail Campaigns",
+        url: "/campaigns",
+        items: [],
+        icon: Icons.Inbox
+      }
     ],
   },
 ];

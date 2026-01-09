@@ -1,16 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import BlogCategoryService from "@/services/blog/category";
+import PartnersService from "@/services/partners";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import ImageUploaderCrop from "../../website/add/ImageUploaderCrop";
 
-const AddConnector = () => {
+const AddPartner = () => {
   const [data, setData] = useState<any>({
     name: "",
   });
 
-  const [file, setFile] = useState<string | undefined>();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -24,24 +22,19 @@ const AddConnector = () => {
   async function submitForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
-      const result = await BlogCategoryService.createCategory(data);
+      const result = await PartnersService.addPartner(data);
       if (result?.data?.success) {
-        toast.success("Category created successfully");
-        router.push("/news/category");
+        toast.success("Partner created successfully");
+        router.push("/partners");
       } else {
-        toast.error(result?.data?.message ?? "There was a problem trying to create the category. Please check all fields!");
+        toast.error(result?.data?.message ?? "There was a problem trying to create the partner. Please check all fields!");
       }
     } catch (err: any) {
-      toast.error(err?.response?.data?.message ?? "There was a problem trying to create the category. Please check all fields!");
+      toast.error(err?.response?.data?.message ?? "There was a problem trying to create the partner. Please check all fields!");
     } finally {
       setLoading(false);
     }
   }
-  
-  const handleUpdate = (value: any) => {
-    console.log(value)
-  };
-
 
   return (
     <>
@@ -50,7 +43,7 @@ const AddConnector = () => {
           <div className="rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
             <div className="border-b border-stroke px-7 py-4 dark:border-dark-3">
               <h3 className="font-medium text-dark dark:text-white">
-                Staff Information
+                Partner Information
               </h3>
             </div>
             <div className="p-7">
@@ -77,17 +70,17 @@ const AddConnector = () => {
                   <div className="w-full">
                     <label
                       className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
-                      htmlFor="surname"
+                      htmlFor="nipt"
                     >
-                      Surname
+                      NIPT
                     </label>
                     <div className="relative">
                       <input
                         className="w-full  border-[1.5px] border-stroke bg-white py-2.5 pl-4.5 pr-4.5 text-dark focus:border-primary focus-visible:outline-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
                         type="text"
-                        name="surname"
-                        id="surname"
-                        defaultValue={data?.surname}
+                        name="nipt"
+                        id="nipt"
+                        defaultValue={data?.nipt}
                         onChange={(e) => handleChange?.(e)}
                       />
                     </div>
@@ -95,41 +88,27 @@ const AddConnector = () => {
                   <div className="w-full">
                     <label
                       className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
-                      htmlFor="position"
+                      htmlFor="phone"
                     >
-                      Position
+                      Phone Number
                     </label>
                     <div className="relative">
                       <input
                         className="w-full  border-[1.5px] border-stroke bg-white py-2.5 pl-4.5 pr-4.5 text-dark focus:border-primary focus-visible:outline-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
                         type="text"
-                        name="position"
-                        id="position"
-                        defaultValue={data?.position}
+                        name="phone"
+                        id="phone"
+                        defaultValue={data?.phone}
                         onChange={(e) => handleChange?.(e)}
                       />
                     </div>
                   </div>
                 </div>
-                <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
-                  <div className="w-full" style={{flex: 1}}>
-                    <label
-                      className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
-                      htmlFor="photo"
-                    >
-                      Photo
-                    </label>
-                    <div className="relative">
-                      <ImageUploaderCrop aspect={6/6} setImage={(img: any) => {handleUpdate(img)}} />
-                    </div>
-                  </div>
-                  <div style={{flex: 3}}></div>
-                </div>
                 <div className="flex justify-end gap-3">
                   <button
                     className="flex justify-center  border border-stroke px-6 py-[7px] font-medium text-dark hover:shadow-1 dark:border-dark-3 dark:text-white"
                     type="button"
-                    onClick={() => {router.push('/staff')}}
+                    onClick={() => {router.push('/partners')}}
                   >
                     Cancel
                   </button>
@@ -156,4 +135,4 @@ const AddConnector = () => {
   );
 };
 
-export default AddConnector;
+export default AddPartner;
