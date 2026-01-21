@@ -8,9 +8,6 @@
     "start": "next start",
     "lint": "eslint src"
   },
-  "eslintConfig": {
-    "root": true
-  },
   "eslint": {
     "useFlatConfig": true
   },
