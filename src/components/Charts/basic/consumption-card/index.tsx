@@ -6,7 +6,6 @@ import {
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { currency } from "@/config";
 import { Role } from "@/types/user/role";
 
 type PropsType = {
@@ -36,8 +35,8 @@ export default function PowerConsumptionCard({
                     backgroundImage: "url('/images/icon/lights-bg.png')"
                 }}
                 onClick={() => {
-                    if(role == Role.SuperAdmin) {router.push('/tower-stations/sessions-cost')}
-                    else {router.push('/tower-stations/sessions')}
+                    // if(role == Role.SuperAdmin) {router.push('/tower-stations/sessions-cost')}
+                    // else {router.push('/tower-stations/sessions')}
                 }}
             >
                 <h6 className="mb-6 text-heading-6 font-bold text-dark dark:text-white">
@@ -51,7 +50,7 @@ export default function PowerConsumptionCard({
                         <h2 className="font-bold text-heading-3">{data?.total_session_costs ?? 0}</h2>
                     </div>
                     <div>
-                        <span className="font-bold ms-1 text-heading-6">{currency}</span>
+                        <span className="font-bold ms-1 text-heading-6"></span>
                     </div>
                 </div>
                 <div className={`flex justify-between ${isMobile ? 'flex-col' : 'flex-row'}`}>
@@ -60,7 +59,7 @@ export default function PowerConsumptionCard({
                             <DollarIcon width={30} height={30} color='#ed891dff' />
                         </div>
                         <div>
-                            <h2 className="font-bold text-lg">Gross Value: {data?.total_session_costs ?? 0} {currency}</h2>
+                            <h2 className="font-bold text-lg">Gross Value: {data?.total_session_costs ?? 0}</h2>
                         </div>
                     </div>
                     <div className="flex items-center gap-1 mt-6 justify-center w-full">
@@ -68,7 +67,7 @@ export default function PowerConsumptionCard({
                             <DollarIcon width={30} height={30} color='#22d652ff' />
                         </div>
                         <div>
-                            <h2 className="font-bold text-lg">Net Value: {data?.total_session_costs_net ?? 0} {currency}</h2>
+                            <h2 className="font-bold text-lg">Net Value: {data?.total_session_costs_net ?? 0}</h2>
                         </div>
                     </div>
                 </div>
