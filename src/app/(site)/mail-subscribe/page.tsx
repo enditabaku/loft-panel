@@ -17,7 +17,7 @@ const tableHeader = [
   },
   {
     header: "Subscribed date",
-    accessorKey: "date",
+    accessorKey: "subscribed_at",
   },
 ];
 

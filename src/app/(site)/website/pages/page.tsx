@@ -118,7 +118,7 @@ const PagesList = () => {
                         onClick={() => { router.push(`/website/add`) }}
                     >
                         <CirclePlusIcon />
-                        Add New Article
+                        Add New Page
                     </button>
                 </div>
             </>

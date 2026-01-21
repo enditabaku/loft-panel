@@ -165,28 +165,6 @@ const AccountProfile = () => {
                   <div className="w-full sm:w-1/2">
                     <label
                       className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
-                      htmlFor="registration_type"
-                    >
-                      Registration Type
-                    </label>
-                    <div className="relative">
-                      <span className="absolute left-4.5 top-1/2 -translate-y-1/2">
-                        <UserIcon />
-                      </span>
-                      <input
-                        className="w-full  border-[1.5px] border-stroke bg-white py-2.5 pl-12.5 pr-4.5 text-dark focus:border-primary focus-visible:outline-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
-                        type="text"
-                        name="registration_type"
-                        id="registration_type"
-                        defaultValue={user?.registration_type}
-                        onChange={(e) => handleChange?.(e)}
-                        readOnly
-                      />
-                    </div>
-                  </div>
-                  <div className="w-full sm:w-1/2">
-                    <label
-                      className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
                       htmlFor="profile"
                     >
                       Role

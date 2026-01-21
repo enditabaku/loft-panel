@@ -11,7 +11,7 @@ const WebsiteFolders = () => {
   const [page, setPage] = React.useState(1);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [total, setTotal] = React.useState(0);
-  const [addNewCategory, setAddNewCategory] = React.useState(false);
+  const [addNewGroup, setAddNewGroup] = React.useState(false);
 
   const getData = async () => {
     setIsLoading(true);
@@ -34,14 +34,14 @@ const WebsiteFolders = () => {
     getData();
   }, [page, rowsPerPage]);
 
-  const submitCategory = async () => {
+  const submitGroup = async () => {
     setIsLoading(true);
     try {
       const result: any = await WebsiteService.createPageGroup(catName);
       if (result?.data?.success) {
         toast.success("Success!")
         getData();
-        setAddNewCategory(false);
+        setAddNewGroup(false);
         setCatName({});
       }
     } catch (e: any) {
@@ -51,7 +51,7 @@ const WebsiteFolders = () => {
     }
   };
 
-  const deleteCategory = async (id: string) => {
+  const deleteGroup = async (id: string) => {
     setIsLoading(true);
     try {
       await WebsiteService.deletePageGroup(id);
@@ -69,7 +69,7 @@ const WebsiteFolders = () => {
           Website Public Pages Folders/Groups
         </h1>
         <button
-          onClick={() => setAddNewCategory(true)}
+          onClick={() => setAddNewGroup(true)}
           className="bg-black text-white px-4 py-2 text-sm"
         >
          Add New
@@ -99,7 +99,7 @@ const WebsiteFolders = () => {
               className="w-full border rounded-md px-3 py-2 bg-transparent text-sm"
             />
             <button
-              onClick={() => deleteCategory(item.id)}
+              onClick={() => deleteGroup(item.id)}
               className="border border-red-500 text-red-500 px-3 rounded-md"
             >
               DELETE
@@ -153,10 +153,10 @@ const WebsiteFolders = () => {
       )}
 
       {/* Modal */}
-      {addNewCategory && (
+      {addNewGroup && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
           <div className="bg-white p-6 w-full max-w-lg space-y-4">
-            <h2 className="text-lg font-semibold">Add new category</h2>
+            <h2 className="text-lg font-semibold">Add new group</h2>
 
             {['en', 'sq'].map((lang) => (
               <input
@@ -172,13 +172,13 @@ const WebsiteFolders = () => {
 
             <div className="flex justify-end gap-2">
               <button
-                onClick={() => setAddNewCategory(false)}
+                onClick={() => setAddNewGroup(false)}
                 className="px-4 py-2 border"
               >
                 Cancel
               </button>
               <button
-                onClick={submitCategory}
+                onClick={submitGroup}
                 className="px-4 py-2 bg-dark text-white"
               >
                 Add

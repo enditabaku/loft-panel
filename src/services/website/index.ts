@@ -9,15 +9,15 @@ const WebsiteService = {
   // Delete page group
   deletePageGroup: (id: string): AwaitStatusResponse<unknown> => AuthClient().delete(`${API_ADMIN}website/group/${id}`),
   // Get website pages
-  getPages: (params: any): AwaitStatusResponse<unknown> => AuthClient().get(`${API_ADMIN}website/group/pages`, {params}),
+  getPages: (params: any): AwaitStatusResponse<unknown> => AuthClient().get(`${API_ADMIN}website/pages`, {params}),
   // Delete website page
-  deletePage: (id: string): AwaitStatusResponse<unknown> => AuthClient().delete(`${API_ADMIN}website/group/pages/${id}`),
+  deletePage: (id: string): AwaitStatusResponse<unknown> => AuthClient().delete(`${API_ADMIN}website/pages/${id}`),
   // Create Page
-  createPage: (params: any): AwaitStatusResponse<unknown> => AuthClient().post(`${API_ADMIN}website/group/pages`, params),
+  createPage: (params: any): AwaitStatusResponse<unknown> => AuthClient().post(`${API_ADMIN}website/pages`, params),
   // Get website page
-  getPage: (id: any): AwaitStatusResponse<unknown> => AuthClient().get(`${API_ADMIN}website/group/pages/${id}`),
+  getPage: (id: any): AwaitStatusResponse<unknown> => AuthClient().get(`${API_ADMIN}website/pages/${id}`),
   // Update Page
-  updatePage: (params: any, id: string): AwaitStatusResponse<unknown> => AuthClient().patch(`${API_ADMIN}website/group/pages/${id}`, params),
+  updatePage: (params: any, id: string): AwaitStatusResponse<unknown> => AuthClient().patch(`${API_ADMIN}website/pages/${id}`, params),
 }
 
 export default WebsiteService

@@ -27,6 +27,18 @@ const tableHeader = [
   },
 ];
 
+const tableActions = [
+  {
+    name: "edit",
+    label: "Edit"
+  },
+  {
+    name: "delete",
+    label: "Delete"
+  }
+]
+
+
 export default function Staff() {
   const router = useRouter();
   const [data, setData] = useState<any[]>([]);
@@ -58,24 +70,24 @@ export default function Staff() {
     }
   }
 
-    const RenderTableHeader = () => {
-        return (
-            <>
-                <div className="flex justify-between px-7.5 py-4.5">
-                    <div className="relative z-20 w-full max-w-[414px]">
-                    </div>
-                    <button
-                        className="flex justify-center items-center gap-1  bg-dark px-4 py-[8px] font-medium text-gray-2 hover:shadow-1 dark:border-dark-3 dark:text-white"
-                        type="button"
-                        onClick={() => { router.push(`/staff/add`) }}
-                    >
-                        <CirclePlusIcon />
-                        Add New Member
-                    </button>
-                </div>
-            </>
-        )
-    }
+  const RenderTableHeader = () => {
+    return (
+      <>
+        <div className="flex justify-between px-7.5 py-4.5">
+          <div className="relative z-20 w-full max-w-[414px]">
+          </div>
+          <button
+            className="flex justify-center items-center gap-1  bg-dark px-4 py-[8px] font-medium text-gray-2 hover:shadow-1 dark:border-dark-3 dark:text-white"
+            type="button"
+            onClick={() => { router.push(`/staff/add`) }}
+          >
+            <CirclePlusIcon />
+            Add New Member
+          </button>
+        </div>
+      </>
+    )
+  }
 
   useEffect(() => {
     getData();
@@ -98,11 +110,13 @@ export default function Staff() {
           tableHeader={tableHeader}
           data={data ?? []}
           getData={getData}
-          tableActions={[]}
+          tableActions={tableActions}
           RenderTableHeader={RenderTableHeader}
           hasPagination={true}
           meta={meta}
           loading={isLoading}
+          onEdit={(id: string) => { router.push(`/staff/edit/${id}`) }}
+          onDelete={(id: string) => { }}
         />
       </div>
     </>

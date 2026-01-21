@@ -91,7 +91,7 @@ export default function ConnectorTypes() {
           <button
             className="flex justify-center items-center gap-1  bg-dark px-4 py-[8px] font-medium text-gray-2 hover:shadow-1 dark:border-dark-3 dark:text-white"
             type="button"
-            onClick={() => { router.push(`/news/articles/add`) }}
+            onClick={() => { router.push(`/news/new`) }}
           >
             <CirclePlusIcon />
             Add New Article

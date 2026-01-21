@@ -10,7 +10,7 @@ export default function AuthLayout({ children }: any) {
 
   useEffect(() => {
     if (state?.isLoggedIn && state?.isInitialized) {
-      return redirect("/dashboard")
+      return redirect("/staff")
     }
   }, [state]);
 

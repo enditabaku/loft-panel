@@ -37,7 +37,7 @@ export default function SigninWithPassword() {
           if (event?.data?.success || event?.success) {
             toast.success("Logged in successfully");
             setLoading(false);
-            router.push("/dashboard")
+            router.push("/staff")
           } else {
             setLoading(false);
             setError(event?.message ?? "Something went wrong! Please try again!");

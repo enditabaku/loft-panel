@@ -30,7 +30,7 @@ const tableHeader = [
   },
   {
     header: "Completion Date",
-    accessorKey: "Completion Date",
+    accessorKey: "completion_date",
   },
   {
     header: "Year",

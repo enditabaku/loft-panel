@@ -27,6 +27,17 @@ const tableHeader = [
   },
 ];
 
+const tableActions = [
+  {
+    name: "edit",
+    label: "Edit"
+  },
+  {
+    name: "delete",
+    label: "Delete"
+  }
+]
+
 export default function Clients() {
   const router = useRouter();
   const [data, setData] = useState<any[]>([]);
@@ -98,11 +109,13 @@ export default function Clients() {
           tableHeader={tableHeader}
           data={data ?? []}
           getData={getData}
-          tableActions={[]}
+          tableActions={tableActions}
           RenderTableHeader={RenderTableHeader}
           hasPagination={true}
           meta={meta}
           loading={isLoading}
+          onEdit={(id: string) => { router.push(`/clients/edit/${id}`) }}
+          onDelete={(id: string) => { }}
         />
       </div>
     </>
