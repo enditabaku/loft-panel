@@ -56,7 +56,7 @@ const ImageUploaderCrop = ({
   return (
     <div className="space-y-4">
       {/* Upload Button */}
-      <label className="flex items-center justify-center gap-2 w-full cursor-pointer border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-100">
+      <label className="flex items-center h-[46px] justify-center gap-2 w-full cursor-pointer border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-100">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5"

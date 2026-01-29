@@ -6,7 +6,12 @@ import { useRouter } from "next/navigation";
 
 const AddType = () => {
   const [data, setData] = useState<any>({
-    name: "",
+    name_en: "",
+    name_sq: "",
+    name_de: "",
+    name_fr: "",
+    name_es: "",
+    name_ar: "",
   });
   
   const [loading, setLoading] = useState(false);
@@ -71,7 +76,7 @@ const AddType = () => {
                   <div className="w-full">
                     <label
                       className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
-                      htmlFor="name"
+                      htmlFor="name_sq"
                     >
                       Name in SQ
                     </label>
@@ -82,6 +87,80 @@ const AddType = () => {
                         name="name_sq"
                         id="name_sq"
                         defaultValue={data?.name_sq}
+                        onChange={(e) => handleChange?.(e)}
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full">
+                    <label
+                      className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
+                      htmlFor="name_de"
+                    >
+                      Name in DE
+                    </label>
+                    <div className="relative">
+                      <input
+                        className="w-full  border-[1.5px] border-stroke bg-white py-2.5 pl-4.5 pr-4.5 text-dark focus:border-primary focus-visible:outline-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                        type="text"
+                        name="name_de"
+                        id="name_de"
+                        defaultValue={data?.name_de}
+                        onChange={(e) => handleChange?.(e)}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
+                  <div className="w-full">
+                    <label
+                      className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
+                      htmlFor="name_fr"
+                    >
+                      Name in FR
+                    </label>
+                    <div className="relative">
+                      <input
+                        className="w-full  border-[1.5px] border-stroke bg-white py-2.5 pl-4.5 pr-4.5 text-dark focus:border-primary focus-visible:outline-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                        type="text"
+                        name="name_fr"
+                        id="name_fr"
+                        defaultValue={data?.name_fr}
+                        onChange={(e) => handleChange?.(e)}
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full">
+                    <label
+                      className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
+                      htmlFor="name_es"
+                    >
+                      Name in ES
+                    </label>
+                    <div className="relative">
+                      <input
+                        className="w-full  border-[1.5px] border-stroke bg-white py-2.5 pl-4.5 pr-4.5 text-dark focus:border-primary focus-visible:outline-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                        type="text"
+                        name="name_es"
+                        id="name_es"
+                        defaultValue={data?.name_es}
+                        onChange={(e) => handleChange?.(e)}
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full">
+                    <label
+                      className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
+                      htmlFor="name_ar"
+                    >
+                      Name in AR
+                    </label>
+                    <div className="relative">
+                      <input
+                        className="w-full  border-[1.5px] border-stroke bg-white py-2.5 pl-4.5 pr-4.5 text-dark focus:border-primary focus-visible:outline-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                        type="text"
+                        name="name_ar"
+                        id="name_ar"
+                        defaultValue={data?.name_ar}
                         onChange={(e) => handleChange?.(e)}
                       />
                     </div>

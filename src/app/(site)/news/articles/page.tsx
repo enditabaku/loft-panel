@@ -45,7 +45,7 @@ const tableActions = [
   }
 ]
 
-export default function ConnectorTypes() {
+export default function Articles() {
   const [search, setSearch] = useState("");
   const searchRef = useRef<any>(null);
   const router = useRouter();

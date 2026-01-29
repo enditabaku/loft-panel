@@ -6,7 +6,7 @@ import ImageUploaderCrop from './ImageUploaderCrop';
 import WebsiteService from '@/services/website';
 import toast from 'react-hot-toast';
 
-const LANGS = ['en', 'sq'];
+const LANGS = ['en', 'sq', 'de', 'fr', 'es', 'ar'];
 
 const AddNewPage = () => {
   const [activeTab, setActiveTab] = useState('en');
@@ -16,7 +16,7 @@ const AddNewPage = () => {
   const [coverImage, setCoverImage] = useState<any>(null);
   const [inputValue, setInputValue] = useState('');
   const [editorValue, setEditorValue] = useState<any>({
-    en: {}, sq: {}
+    en: {}, sq: {}, de: {}, fr: {}, es: {}, ar: {}
   });
 
   const initialPage = {
@@ -34,7 +34,11 @@ const AddNewPage = () => {
   const [formData, setFormData] = useState<any>({
     cover_photo: null,
     en: structuredClone(initialPage),
-    sq: structuredClone(initialPage)
+    sq: structuredClone(initialPage),
+    de: structuredClone(initialPage),
+    fr: structuredClone(initialPage),
+    es: structuredClone(initialPage),
+    ar: structuredClone(initialPage)
   });
 
   const handleUpdate = (path: string, value: any, locale = activeTab) => {

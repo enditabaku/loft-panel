@@ -154,7 +154,7 @@ const AddNewBlog = () => {
       <div className="bg-white p-6 mb-6">
         <h2 className="font-semibold mb-2">Language</h2>
         <div className="flex gap-4">
-          {['en', 'sq',].map((lang) => (
+          {['en', 'sq', 'de', 'fr', 'es', 'ar'].map((lang) => (
             <label key={lang} className="flex items-center gap-2 cursor-pointer">
               <input
                 type="checkbox"

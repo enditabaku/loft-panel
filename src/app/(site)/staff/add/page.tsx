@@ -1,13 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import BlogCategoryService from "@/services/blog/category";
+import StaffService from "@/services/staff";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import ImageUploaderCrop from "../../website/add/ImageUploaderCrop";
 
-const AddConnector = () => {
+const AddStaffMember = () => {
   const [data, setData] = useState<any>({
-    name: "",
+    first_name: "",
+    last_name: "",
+    position: "",
+    sort_order: null
   });
 
   const [file, setFile] = useState<string | undefined>();
@@ -24,23 +27,25 @@ const AddConnector = () => {
   async function submitForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
-      const result = await BlogCategoryService.createCategory(data);
+      const result = await StaffService.addStaff({...data, photo: file});
       if (result?.data?.success) {
-        toast.success("Category created successfully");
-        router.push("/news/category");
+        toast.success("Staff Member created successfully");
+        router.push("/staff");
       } else {
-        toast.error(result?.data?.message ?? "There was a problem trying to create the category. Please check all fields!");
+        toast.error(result?.data?.message ?? "There was a problem trying to create the staff member. Please check all fields!");
       }
     } catch (err: any) {
-      toast.error(err?.response?.data?.message ?? "There was a problem trying to create the category. Please check all fields!");
+      toast.error(err?.response?.data?.message ?? "There was a problem trying to create the staff member. Please check all fields!");
     } finally {
       setLoading(false);
     }
   }
   
   const handleUpdate = (value: any) => {
-    console.log(value)
+    setFile(value)
   };
+
+  //sort_order
 
 
   return (
@@ -59,17 +64,17 @@ const AddConnector = () => {
                   <div className="w-full">
                     <label
                       className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
-                      htmlFor="name"
+                      htmlFor="first_name"
                     >
-                      Name
+                      First Name
                     </label>
                     <div className="relative">
                       <input
                         className="w-full  border-[1.5px] border-stroke bg-white py-2.5 pl-4.5 pr-4.5 text-dark focus:border-primary focus-visible:outline-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
                         type="text"
-                        name="name"
-                        id="name"
-                        defaultValue={data?.name}
+                        name="first_name"
+                        id="first_name"
+                        defaultValue={data?.first_name}
                         onChange={(e) => handleChange?.(e)}
                       />
                     </div>
@@ -77,17 +82,17 @@ const AddConnector = () => {
                   <div className="w-full">
                     <label
                       className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
-                      htmlFor="surname"
+                      htmlFor="last_name"
                     >
-                      Surname
+                      Last Name
                     </label>
                     <div className="relative">
                       <input
                         className="w-full  border-[1.5px] border-stroke bg-white py-2.5 pl-4.5 pr-4.5 text-dark focus:border-primary focus-visible:outline-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
                         type="text"
-                        name="surname"
-                        id="surname"
-                        defaultValue={data?.surname}
+                        name="last_name"
+                        id="last_name"
+                        defaultValue={data?.last_name}
                         onChange={(e) => handleChange?.(e)}
                       />
                     </div>
@@ -97,7 +102,7 @@ const AddConnector = () => {
                       className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
                       htmlFor="position"
                     >
-                      Position
+                      Job Position
                     </label>
                     <div className="relative">
                       <input
@@ -112,6 +117,24 @@ const AddConnector = () => {
                   </div>
                 </div>
                 <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
+                  <div className="w-full" style={{flex: 1}}>
+                    <label
+                      className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
+                      htmlFor="position"
+                    >
+                      Job Position
+                    </label>
+                    <div className="relative">
+                      <input
+                        className="w-full  border-[1.5px] border-stroke bg-white py-2.5 pl-4.5 pr-4.5 text-dark focus:border-primary focus-visible:outline-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                        type="text"
+                        name="position"
+                        id="position"
+                        defaultValue={data?.position}
+                        onChange={(e) => handleChange?.(e)}
+                      />
+                    </div>
+                  </div>
                   <div className="w-full" style={{flex: 1}}>
                     <label
                       className="mb-3 block text-body-sm font-medium text-dark dark:text-white"
@@ -156,4 +179,4 @@ const AddConnector = () => {
   );
 };
 
-export default AddConnector;
+export default AddStaffMember;

@@ -10,7 +10,7 @@ import ClientService from '@/services/clients';
 import PartnersService from '@/services/partners';
 import toast from 'react-hot-toast';
 
-const LANGS = ['en', 'sq'];
+const LANGS = ['en', 'sq', 'de', 'fr', 'es', 'ar'];
 
 const AddNewProject = () => {
   const [activeTab, setActiveTab] = useState('en');
@@ -27,7 +27,7 @@ const AddNewProject = () => {
   const [coverImage, setCoverImage] = useState<any>(null);
   const [inputValue, setInputValue] = useState<string>('');
   const [editorValue, setEditorValue] = useState<any>({
-    en: {}, sq: {}
+    en: {}, sq: {}, de: {}, fr: {}, es: {}, ar: {}
   });
 
   const initialPage = {
@@ -38,7 +38,11 @@ const AddNewProject = () => {
   const [formData, setFormData] = useState<any>({
     cover_photo: null,
     en: structuredClone(initialPage),
-    sq: structuredClone(initialPage)
+    sq: structuredClone(initialPage),
+    de: structuredClone(initialPage),
+    fr: structuredClone(initialPage),
+    es: structuredClone(initialPage),
+    ar: structuredClone(initialPage)
   });
 
   const handleUpdate = (path: string, value: any, locale = activeTab) => {

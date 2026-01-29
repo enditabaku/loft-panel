@@ -95,7 +95,7 @@ const WebsiteFolders = () => {
           <div key={item.id} className="flex gap-2">
             <input
               readOnly
-              value={`EN: ${item.name_en} | AL: ${item.name_sq} | FR: ${item.name_fr} | IT: ${item.name_it} | ES: ${item.name_es}`}
+              value={`EN: ${item.name_en} | SQ: ${item.name_sq} | FR: ${item.name_fr} | DE: ${item.name_de} | ES: ${item.name_es} | AR: ${item.name_ar}`}
               className="w-full border rounded-md px-3 py-2 bg-transparent text-sm"
             />
             <button
@@ -158,7 +158,7 @@ const WebsiteFolders = () => {
           <div className="bg-white p-6 w-full max-w-lg space-y-4">
             <h2 className="text-lg font-semibold">Add new group</h2>
 
-            {['en', 'sq'].map((lang) => (
+            {['en', 'sq', 'de', 'fr', 'es', 'ar'].map((lang) => (
               <input
                 key={lang}
                 placeholder={`Name (${lang.toUpperCase()})`}

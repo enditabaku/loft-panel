@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import ImageUploaderCrop from "@/app/(site)/website/add/ImageUploaderCrop";
 
-const AddConnector = () => {
+const EditStaffMember = () => {
   const [data, setData] = useState<any>({
     name: "",
   });
@@ -156,4 +156,4 @@ const AddConnector = () => {
   );
 };
 
-export default AddConnector;
+export default EditStaffMember;
